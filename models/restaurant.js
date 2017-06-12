@@ -1,4 +1,4 @@
-var mongoos = require('mongoose');
+var mongoose = require('mongoose');
 var Schema = require.Schema;
 var mongoUrl = process.env.MONGODB_URI || 'mogodb://localhost/restaurants';
 mongoose.connect(mongoUri, function(error) {
