@@ -1,9 +1,10 @@
 var mongoose = require('mongoose');
-var Schema = require.Schema;
+var Schema = mongoose.Schema;
 var mongoUrl = process.env.MONGODB_URI || 'mogodb://localhost/restaurants';
+
 mongoose.connect(mongoUri, function(error) {
-	if (error) throw error;
-})
+	if (error) throw error
+});
 
 var restaurant_schema = new Schema({
 	name: String,
@@ -16,5 +17,6 @@ var restaurant_schema = new Schema({
 		default: Date.now
 	}
 });
+
 var Restaurant = mongoose.model('restaurant', restaurant_schema);
 module.exports.Restaurant = Restaurant;
