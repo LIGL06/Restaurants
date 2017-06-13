@@ -8,7 +8,11 @@ mongoose.connect(mongoUri, function(error) {
 
 var photo_schema = new Schema({
 	restaurant: String,
-	position: Number
+	position: Number,
+	created: {
+		type: Date,
+		default: Date.now
+	}
 });
 
 var Photo = mongoose.model('photo', photo_schema);

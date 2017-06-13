@@ -8,6 +8,10 @@ mongoose.connect(mongoUri, function(error) {
 
 var product_schema = new Schema({
 	price: Number,
+	created: {
+		type: Date,
+		default: Date.now
+	}
 });
 
 var Product = mongoose.model("product", product_schema);

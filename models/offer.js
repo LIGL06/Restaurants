@@ -14,7 +14,11 @@ var offer_schema = new Schema({
 		max: 100
 	},
 	QR: String,
-	id: Number
+	id: Number,
+	created: {
+		type: Date,
+		default: Date.now
+	}
 });
 
 var Offer = mongoose.model('offer', offer_schema);
