@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var mongoUrl = process.env.MONGODB_URI || 'mogodb://localhost/offers';
+var mongoUri = process.env.MONGODB_URI || 'mogodb://localhost/offers';
 
 mongoose.connect(mongoUri, function(error) {
 	if (error) throw error
