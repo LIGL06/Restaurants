@@ -1,5 +1,5 @@
 var express = require('express');
-var Restaurant = require('../models/restaurant').Restaurant;
+var QR = require('../models/qr').QR;
 var router = express.Router();
 
 /* GET users listing. */
@@ -8,13 +8,13 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-	var restaurant = new Restaurant({
-		name: req.body.name,
-		address: req.body.address,
-		type: req.body.type
+	var qr = new QRS({
+		text: req.body.text,
+		type: req.body.type,
+		url: req.body.url
 	});
-	restaurant.save().then(function() {
-		res.send(restaurant);
+	photo.save().then(function() {
+		res.send(qr);
 	});
 });
 

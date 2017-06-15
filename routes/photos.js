@@ -1,5 +1,5 @@
 var express = require('express');
-var Restaurant = require('../models/restaurant').Restaurant;
+var Photo = require('../models/photo').Photo;
 var router = express.Router();
 
 /* GET users listing. */
@@ -8,13 +8,12 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-	var restaurant = new Restaurant({
-		name: req.body.name,
-		address: req.body.address,
-		type: req.body.type
+	var photo = new Photo({
+		restaurant: req.body.restaurant,
+		position: req.body.position
 	});
-	restaurant.save().then(function() {
-		res.send(restaurant);
+	photo.save().then(function() {
+		res.send(photo);
 	});
 });
 

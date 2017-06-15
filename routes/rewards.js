@@ -1,5 +1,5 @@
 var express = require('express');
-var Restaurant = require('../models/restaurant').Restaurant;
+var Reward = require('../models/reward').Reward;
 var router = express.Router();
 
 /* GET users listing. */
@@ -8,13 +8,13 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-	var restaurant = new Restaurant({
-		name: req.body.name,
-		address: req.body.address,
-		type: req.body.type
+	var reward = new Rewards({
+		value: req.body.value,
+		points: req.body.points,
+		cumulativeMax: req.body.cumulativeMax
 	});
-	restaurant.save().then(function() {
-		res.send(restaurant);
+	photo.save().then(function() {
+		res.send(reward);
 	});
 });
 

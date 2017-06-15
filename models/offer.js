@@ -7,14 +7,20 @@ mongoose.connect(mongoUri, function(error) {
 });
 
 var offer_schema = new Schema({
-	restaurant: String,
+	restaurant: {
+		type: Schema.Types.ObjectId,
+		ref: 'Restaurant'
+	},
 	discount: {
 		type: Number,
 		min: 0,
 		max: 100
 	},
-	QR: String,
-	id: Number,
+	type: String,
+	QR: {
+		type: Schema.Types.ObjectId,
+		ref: 'QR'
+	},
 	created: {
 		type: Date,
 		default: Date.now
