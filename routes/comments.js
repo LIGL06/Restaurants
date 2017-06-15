@@ -1,5 +1,5 @@
 var express = require('express');
-var User = require('../models/user').User;
+var Comment = require('../models/comment').Comment;
 var router = express.Router();
 
 /* GET users listing. */
@@ -8,15 +8,13 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function (req, res, next){
-  var user = new User({
-    fname: req.body.fname,
-    lname: req.body.lname,
-    sex: req.body.sex,
-    email: req.body.email,
-    password: req.body.password
+  var comment = new Comment({
+    user: req.body.user,
+    restaurant: req.body.restaurant,
+    text: req.body.text
   });
-  user.save().then(function(){
-    res.send(user);
+  comment.save().then(function(){
+    res.send(comment);
   });
 });
 

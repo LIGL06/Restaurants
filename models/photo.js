@@ -8,7 +8,7 @@ mongoose.connect(mongoUri, function(error) {
 
 var photo_schema = new Schema({
 	restaurant: String,
-	position: Number,
+	position: String,
 	created: {
 		type: Date,
 		default: Date.now

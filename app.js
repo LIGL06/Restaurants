@@ -5,9 +5,13 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var sassMiddleware = require('node-sass-middleware');
+var methodOverride = require('method-override');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var restaurants = require('./routes/restaurants');
+var comments = require('./routes/comments');
+// var api = require('./routes/api');
 
 var app = express();
 var port = process.env.PORT || 8080
@@ -18,9 +22,10 @@ app.set('view engine', 'pug');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(methodOverride('_method'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(sassMiddleware({
   src: path.join(__dirname, 'public'),
@@ -32,6 +37,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/restaurants', restaurants);
+app.use('/comments', comments);
+// app.use('/api/v1', api);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -51,5 +59,5 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.listen(port)
+app.listen(port);
 module.exports = app;
