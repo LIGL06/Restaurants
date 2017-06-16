@@ -8,9 +8,14 @@ var sassMiddleware = require('node-sass-middleware');
 var methodOverride = require('method-override');
 
 var index = require('./routes/index');
-var users = require('./routes/users');
-var restaurants = require('./routes/restaurants');
 var comments = require('./routes/comments');
+var offers = require('./routes/offers');
+var photos = require('./routes/photos');
+var products = require('./routes/products');
+var qrs = require('./routes/qrs');
+var restaurants = require('./routes/restaurants');
+var rewards = require('./routes/rewards');
+var users = require('./routes/users');
 // var api = require('./routes/api');
 
 var app = express();
@@ -25,38 +30,45 @@ app.set('view engine', 'pug');
 app.use(methodOverride('_method'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({
+	extended: true
+}));
 app.use(cookieParser());
 app.use(sassMiddleware({
-  src: path.join(__dirname, 'public'),
-  dest: path.join(__dirname, 'public'),
-  indentedSyntax: true, // true = .sass and false = .scss
-  sourceMap: true
+	src: path.join(__dirname, 'public'),
+	dest: path.join(__dirname, 'public'),
+	indentedSyntax: true, // true = .sass and false = .scss
+	sourceMap: true
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/users', users);
-app.use('/restaurants', restaurants);
 app.use('/comments', comments);
+app.use('/offers', offers);
+app.use('/photos', photos);
+app.use('/products', products);
+app.use('/qrs', qrs);
+app.use('/restaurants', restaurants);
+app.use('/rewards', rewards);
+app.use('/users', users);
 // app.use('/api/v1', api);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+	var err = new Error('Not Found');
+	err.status = 404;
+	next(err);
 });
 
 // error handler
 app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+	// set locals, only providing error in development
+	res.locals.message = err.message;
+	res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+	// render the error page
+	res.status(err.status || 500);
+	res.render('error');
 });
 
 app.listen(port);
