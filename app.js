@@ -16,7 +16,7 @@ var qrs = require('./routes/qrs');
 var restaurants = require('./routes/restaurants');
 var rewards = require('./routes/rewards');
 var users = require('./routes/users');
-// var api = require('./routes/api');
+var api = require('./routes/api');
 
 var app = express();
 var port = process.env.PORT || 8080
@@ -51,7 +51,7 @@ app.use('/qrs', qrs);
 app.use('/restaurants', restaurants);
 app.use('/rewards', rewards);
 app.use('/users', users);
-// app.use('/api/v1', api);
+app.use('/api/v1', api);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -71,5 +71,8 @@ app.use(function(err, req, res, next) {
 	res.render('error');
 });
 
-app.listen(port);
+app.listen(port, function(error){
+	if(error) console.log(error);
+	console.log('Restaurantify listening...');
+});
 module.exports = app;
