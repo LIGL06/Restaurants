@@ -1,9 +1,14 @@
 $primary-color: #351F39 !default
 $secondary-color: #726A95 !default
-@import url('https://fonts.googleapis.com/css?family=Roboto:100,400,900')
+@import url(https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900)
 @import "node_modules/materialize-css/sass/materialize.scss"
-body
-  padding: 50px
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif
-a
-  color: #00B7FF
+$roboto: 'Roboto', sans-serif
+html
+  font-family: $roboto
+  font-weight: 300
+  color: lighten($primary-color, 20%)
+  background: lighten($secondary-color, 40%)
+nav
+  .nav-wrapper
+    a.brand-logo
+      margin-left: 1em
