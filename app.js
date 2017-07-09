@@ -10,14 +10,7 @@ var methodOverride = require('method-override');
 
 var session_mid = require('./middleware/session');
 var index = require('./routes/index');
-// var comments = require('./routes/comments');
-// var offers = require('./routes/offers');
-// var photos = require('./routes/photos');
-// var products = require('./routes/products');
-// var qrs = require('./routes/qrs');
-// var restaurants = require('./routes/restaurants');
-// var rewards = require('./routes/rewards');
-// var users = require('./routes/users');
+var auth = require('./routes/auth');
 var api = require('./routes/api');
 
 var app = express();
@@ -41,22 +34,15 @@ app.use(cookieParser({
 app.use(sassMiddleware({
 	src: path.join(__dirname, 'public'),
 	dest: path.join(__dirname, 'public'),
+	outputStyle: 'compressed',
 	indentedSyntax: true, // true = .sass and false = .scss
 	sourceMap: true
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/', index);
+app.use('/auth', auth);
 app.use('/dashboard', session_mid);
-app.use('/dashboard', index);
-// app.use('/comments', comments);
-// app.use('/offers', offers);
-// app.use('/photos', photos);
-// app.use('/products', products);
-// app.use('/qrs', qrs);
-// app.use('/restaurants', restaurants);
-// app.use('/rewards', rewards);
-// app.use('/users', users);
-// app.use('/api/v1', api);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
