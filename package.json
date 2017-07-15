@@ -1,6 +1,6 @@
 {
-  "name": "restaurants",
-  "version": "0.0.0",
+  "name": "restaurantify",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
@@ -11,17 +11,56 @@
     "cookie-parser": "~1.4.3",
     "cookie-session": "^2.0.0-beta.2",
     "debug": "~2.6.3",
+    "empty-element": "^1.0.0",
     "express": "~4.15.2",
+    "file-extension": "^3.1.2",
+    "intl": "^1.2.5",
+    "intl-relativeformat": "^2.0.0",
     "materialize-css": "^0.98.2",
     "method-override": "^2.3.9",
     "mongoose": "^4.10.5",
     "morgan": "~1.8.1",
+    "multer": "^1.3.0",
     "node-sass-middleware": "0.9.8",
+    "page": "^1.7.1",
     "pug": "~2.0.0-beta11",
-    "serve-favicon": "~2.4.2"
+    "serve-favicon": "~2.4.2",
+    "superagent": "^3.5.2",
+    "yo-yo": "^1.4.1"
   },
   "devDependencies": {
+    "babel-plugin-syntax-async-functions": "^6.13.0",
+    "babel-plugin-transform-regenerator": "^6.24.1",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babelify": "^7.3.0",
+    "browserify": "^14.4.0",
+    "graceful-fs": "^4.1.11",
     "gulp": "^3.9.1",
-    "gulp-minify": "^1.0.0"
-  }
+    "gulp-minify": "^1.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "minimatch": "^3.0.4",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.9.0"
+  },
+  "description": "Node.js Platform for Restaurants",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LIGL06/Restaurants.git"
+  },
+  "keywords": [
+    "Restaurants",
+    "Food",
+    "Service",
+    "Beacons",
+    "Customers"
+  ],
+  "author": "Luis Iván García, Daniel Alexandro Mtz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LIGL06/Restaurants/issues"
+  },
+  "homepage": "https://github.com/LIGL06/Restaurants#readme"
 }

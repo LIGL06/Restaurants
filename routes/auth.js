@@ -4,11 +4,11 @@ var User = require('../models/user').User;
 var router = express.Router();
 
 /* GET home page. */
-router.get('/login', function(req, res, next) {
-  res.render('auth/login', { title: 'Restaurantify' });
+router.get('/signin', function(req, res, next) {
+  res.render('layout', { title: 'Restaurantify - Signin' });
 });
 
-router.post('/login', function(req, res, next){
+router.post('/signin', function(req, res, next){
   if(req.body.hasOwnProperty('email') && req.body.hasOwnProperty('password')){
     User.findOne({email: req.body.email}, function(error, user){
       if(error) throw error;
@@ -24,8 +24,8 @@ router.post('/login', function(req, res, next){
   }
 });
 
-router.get('/logup', function(req, res, next){
-  res.render('auth/logup');
+router.get('/signup', function(req, res, next){
+  res.render('layout', { title: 'Restaurantify - Signup' });
 });
 
 module.exports = router;

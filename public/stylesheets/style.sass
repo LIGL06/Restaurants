@@ -1,29 +1,38 @@
-$primary-color: #fff !default
-$secondary-color: #000 !default
-@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900');
+$primary-color: #FA5710 !default
+$secondary-color: #125688 !default
+$roboto-thin: 'Roboto-Thin', sans-serif
+$roboto-light: 'Roboto-Light', sans-serif
+$roboto-medium: 'Roboto-Medium', sans-serif
+$roboto-regular: 'Roboto-Regular', sans-serif
+$roboto-bold: 'Roboto-Bold', sans-serif
+$roboto-black: 'Roboto-Black', sans-serif
 @import "node_modules/materialize-css/sass/materialize.scss"
-$roboto: 'Roboto', sans-serif
+@font-face 
+    font-family: $roboto-thin
+    src: url('fonts/Roboto-Thin.ttf') format('truetype')
+@font-face 
+    font-family: $roboto-light
+    src: url('fonts/Roboto-Light.ttf') format('truetype')
+@font-face 
+    font-family: $roboto-regular
+    src: url('fonts/Roboto-Regular.ttf') format('truetype')
+@font-face 
+    font-family: $roboto-medium
+    src: url('fonts/Roboto-Medium.ttf') format('truetype')
+@font-face 
+    font-family: $roboto-bold
+    src: url('fonts/Roboto-Bold.ttf') format('truetype')
+@font-face 
+    font-family: $roboto-black
+    src: url('fonts/Roboto-Black.ttf') format('truetype')
 html
-  font-family: $roboto
-  font-weight: 300
+  font-family: $roboto-regular
   color: lighten($primary-color, 20%)
-  background: lighten($secondary-color, 40%)
-nav
-  .nav-wrapper
-    a.brand-logo
-      margin-left: 1em
-.thin-font
-  font-weight: 100
-.light-font
-  font-weight: 300
-.regular-font
-  font-weight: 400
-.medium-font
-  font-weight: 500
-.bold-font
-  font-weight: 700
-.black-font 
-  font-weight: 900
+  background: #fafafa
+h1, h2, h3, h4, h5, h6
+  font-family: $roboto-medium
+b
+  font-family: $roboto-black
 .mtop-1
   margin-top: 1em
 .mtop-2
