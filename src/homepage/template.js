@@ -26,7 +26,7 @@ module.exports = function(pictures){
         })}
       </div>
     </div>
-  </div>`
+  </div>`;
     function toggleButtons(){
         document.getElementById('fileName').classList.toggle('hide');
         document.getElementById('btnUpload').classList.toggle('hide');
@@ -51,5 +51,4 @@ module.exports = function(pictures){
         })
     }
     return layout(element);
-
     }

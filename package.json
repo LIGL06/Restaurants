@@ -16,6 +16,7 @@
     "file-extension": "^3.1.2",
     "intl": "^1.2.5",
     "intl-relativeformat": "^2.0.0",
+    "jquery": "~2",
     "materialize-css": "^0.98.2",
     "method-override": "^2.3.9",
     "mongoose": "^4.10.5",
@@ -26,6 +27,7 @@
     "pug": "~2.0.0-beta11",
     "serve-favicon": "~2.4.2",
     "superagent": "^3.5.2",
+    "title": "^1.0.0",
     "yo-yo": "^1.4.1"
   },
   "devDependencies": {

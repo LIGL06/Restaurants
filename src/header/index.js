@@ -7,7 +7,7 @@ var element = yo`<div>
     <div class="container">
       <div class="row">
         <div class="col s12 m6 offset-m1">
-          <a href="/" class="brand-logo platzigram">Platzigram</a>
+          <a href="/" class="brand-logo platzigram">Restaurantify</a>
         </div>
         <div class="col s12 m6 push-m8">
           <a href="#!" class="btn btn-large btn-flat dropdown-button" data-activates="drop-user">
