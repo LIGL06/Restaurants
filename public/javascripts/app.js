@@ -18456,7 +18456,7 @@ page();
 },{"./footer":342,"./homepage":344,"./signin":350,"./signup":352,"babel-polyfill":1,"page":328}],347:[function(require,module,exports){
 'use strict';
 
-var _templateObject = _taggedTemplateLiteral(['<div class="container landing">\n    <div class="row">\n      <div class="col s10 push-s1">\n        <div class="row">\n          <div class="col m5 hide-on-small-only">\n            <img class="iphone" src="iphone.png" />\n          </div>\n          ', '\n        </div>\n      </div>\n    </div>\n  </div>'], ['<div class="container landing">\n    <div class="row">\n      <div class="col s10 push-s1">\n        <div class="row">\n          <div class="col m5 hide-on-small-only">\n            <img class="iphone" src="iphone.png" />\n          </div>\n          ', '\n        </div>\n      </div>\n    </div>\n  </div>']);
+var _templateObject = _taggedTemplateLiteral(['<div class="container landing">\n    <div class="row">\n      <div class="col s10 push-s1">\n        <div class="row">\n          <div class="col m5 hide-on-small-only">\n            <img class="iphone" src="/images/iphone.png" />\n          </div>\n          ', '\n        </div>\n      </div>\n    </div>\n  </div>'], ['<div class="container landing">\n    <div class="row">\n      <div class="col s10 push-s1">\n        <div class="row">\n          <div class="col m5 hide-on-small-only">\n            <img class="iphone" src="/images/iphone.png" />\n          </div>\n          ', '\n        </div>\n      </div>\n    </div>\n  </div>']);
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
