@@ -1,23 +1,23 @@
 module.exports = {
-  'likes': '{likes, plural, ' +
-      '=0 {no likes} ' +
-      '=1 {# like}' +
-  'other { # likes }}',
+  likes: '{ likes, plural, ' +
+          '=0 { no likes }' +
+          '=1 { # like }' +
+          'other { # likes }}',
   'logout': 'Logout',
   'english': 'English',
   'spanish': 'Spanish',
-  'signup.subheading': 'Signup to watch your friends pictures on Platzi',
-  'signup.facebook': 'Login with Facebook',
-  'signup.text': ' Login',
+  'signup.subheading': 'Signup to watch your friends\' pictures studying at Platzi',
+  'signup.facebook': 'Signup with Facebook',
+  'signup.text': 'Signup',
   'email': 'Email',
   'username': 'Username',
-  'fullname': 'Full Name',
+  'fullname': 'Fullname',
   'password': 'Password',
   'signup.call-to-action': 'Signup',
-  'signup.have-account': 'All ready have an account?',
-  'signin': 'Login',
-  'signin.not-have-account': 'Not having an account?',
+  'signup.have-account': 'Already have an account?',
+  'signin': 'Signin',
+  'signin.not-have-account': '¿Don\'t have an account?',
   'language': 'Language',
-  'upload': 'Upload',
-  'upload-picture': ' Upload picture'
+  'upload-picture': 'Upload picture',
+  'upload': 'Upload'
 }

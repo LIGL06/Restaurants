@@ -1,53 +1,71 @@
 var page = require('page');
 var empty = require('empty-element');
 var template = require('./template');
+var title = require('title');
 var request = require('superagent');
 var header = require('../header');
+var axios = require('axios');
 
-page('/',header,asyncload,function (ctx, next) {
+page('/', header, loading, asyncLoad, function (ctx, next) {
+  title('Restaurantify - Dashboard');
   var main = document.getElementById('main-container');
+
   empty(main).appendChild(template(ctx.pictures));
 })
-function loadPictures(ctx, next){
+
+function loading(ctx, next) {
+  var container = document.createElement('div');
+  var loadingEl = document.createElement('div');
+  container.classList.add('loader-container');
+  loadingEl.classList.add('loader');
+  container.appendChild(loadingEl);
+  var main = document.getElementById('main-container');
+  empty(main).appendChild(container);
+  next();
+}
+
+function loadPictures(ctx, next) {
   request
     .get('/api/pictures')
-    .end(function(error,res){
-      if (error) return console.log(error)
+    .end(function (err, res) {
+      if (err) return console.log(err);
+
       ctx.pictures = res.body;
-      next()
+      next();
     })
-  }
-function loadPicturesAxios(ctx, next){
+}
+
+function loadPicturesAxios(ctx, next) {
   axios
     .get('/api/pictures')
-    .then(function(res){
+    .then(function (res) {
       ctx.pictures = res.data;
-      next()
+      next();
     })
-    .catch(function(error){
-      console.log(error);
-    })
-}
-function loadPicturesFetch(ctx, next){
-  fetch('/api/pictures')
-    .then(function(res){
-      return res.json()
-    })
-    .then(function(pictures){
-      ctx.pictures = pictures
-      next()
-    })
-    .catch(function(error){
-      console.log(error)
+    .catch(function (err) {
+      console.log(err);
     })
 }
-async function asyncload(ctx,next){
-  try {
-    ctx.pictures = await fetch('/api/pictures').then(res =>res.json())
-    next()
-  } catch (e) {
-    return console.log(e)
-  } finally {
 
+function loadPicturesFetch(ctx, next) {
+  fetch('/api/pictures')
+    .then(function (res) {
+      return res.json();
+    })
+    .then(function (pictures) {
+      ctx.pictures = pictures;
+      next();
+    })
+    .catch(function (err) {
+      console.log(err);
+    })
+}
+
+async function asyncLoad(ctx, next) {
+  try {
+    ctx.pictures = await fetch('/api/pictures').then(res => res.json());
+    next();
+  } catch (err) {
+    return console.log(err);
   }
 }

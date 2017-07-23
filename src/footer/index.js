@@ -10,7 +10,7 @@ var element = yo`<footer class="site-footer">
           <li><a href="#!" onclick=${lang.bind(null,'en-US')}>${translate.message('english')}</a></li>
         </ul>
       </div>
-      <div class="col s12 l3 push-l6 center-align">© 2017 | <a href='https://uvmarketing.com.mx/'>UV Marketing</div>
+      <div class="col s12 l3 push-l6 center-align">© 2017 | <a href='https://uvmarketing.com.mx/' target='_blank'>UV Marketing</div>
     </div>
   </div>
 </footer>`;

@@ -19,7 +19,7 @@ router.post('/signin', function(req, res, next){
           req.session.user_username = user.username
           req.session.user_fname = user.fname
         }
-        res.render('layout', { title: 'Restaurantify - Dashboard' });
+         res.redirect('/');
       }
     });
   }
@@ -27,6 +27,36 @@ router.post('/signin', function(req, res, next){
 
 router.get('/signup', function(req, res, next){
   res.render('layout', { title: 'Restaurantify - Signup' });
+});
+
+router.post('/signup', function(req, res, next){
+  if(req.body.hasOwnProperty('email') && req.body.hasOwnProperty('password')){
+    User.findOne({email: req.body.email}, function(error, user){
+      if(error) throw error;
+      if(!user) {
+        const user = new User({
+          fname: req.body.name,
+          email: req.body.email,
+          username: req.body.username,
+          password: bcrypt.hashSync(req.body.password, 10)
+        });
+        user.save(function(error){
+          if(error) throw error
+          else{
+            req.session.user_id = user._id;
+            req.session.user_username = user.username;
+            req.session.user_fname = user.fname;
+            res.redirect('/');
+          }
+        });
+      }else{
+        req.session.user_id = user._id;
+        req.session.user_username = user.username;
+        req.session.user_fname = user.fname;
+        res.redirect('/');
+      }
+    });
+  }
 });
 
 module.exports = router;

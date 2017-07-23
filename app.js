@@ -11,6 +11,7 @@ var methodOverride = require('method-override');
 var session_mid = require('./middleware/session');
 var api = require('./routes/api');
 var auth = require('./routes/auth');
+var index = require('./routes/index');
 
 var app = express();
 var port = process.env.PORT || 8080
