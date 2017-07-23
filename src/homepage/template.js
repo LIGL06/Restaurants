@@ -5,7 +5,7 @@ var picture = require('../picture-card')
 var translate = require('../translate').message
 var request = require('superagent')
 
-module.exports = function(pictures){
+module.exports = function(restaurants){
     var element = yo`<div class="container timeline">
     <div class="row">
       <div class="col s12 m10 offset-m1 l8 offset-l2 center-align">
@@ -21,7 +21,7 @@ module.exports = function(pictures){
     </div>
     <div class="row">
       <div class="col s12 m10 offset-m1 l6 offset-l3">
-        ${pictures.map(function(pic){
+        ${restaurants.map(function(pic){
           return picture(pic);
         })}
       </div>
@@ -44,7 +44,7 @@ module.exports = function(pictures){
     event.preventDefault();
     var data = new FormData(this);
     request
-        .post('/api/pictures')
+        .post('/api/restaurants')
         .send(data)
         .end(function(error,res){
         console.log(arguments);

@@ -9,16 +9,17 @@ router.get('/signin', function(req, res, next) {
 });
 
 router.post('/signin', function(req, res, next){
-  if(req.body.hasOwnProperty('email') && req.body.hasOwnProperty('password')){
-    User.findOne({email: req.body.email}, function(error, user){
+  if(req.body.hasOwnProperty('username') && req.body.hasOwnProperty('password')){
+    User.findOne({username: req.body.username}, function(error, user){
       if(error) throw error;
-      if(!user) res.redirect('/auth/logup');
+      if(!user) res.redirect('/auth/signup');
       else{
         if(bcrypt.compareSync(req.body.password, user.password)){
           req.session.user_id = user._id
-          req.session.user_email = user.email
+          req.session.user_username = user.username
           req.session.user_fname = user.fname
         }
+        res.render('layout', { title: 'Restaurantify - Dashboard' });
       }
     });
   }

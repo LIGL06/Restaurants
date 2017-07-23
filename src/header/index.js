@@ -1,6 +1,6 @@
-var yo = require('yo-yo');
-var empty = require('empty-element');
-var translate = require('../translate');
+var yo = require('yo-yo')
+var empty = require('empty-element')
+var translate = require('../translate')
 var element = yo`<div>
 <nav class="header">
   <div class="nav-wrapper">
@@ -12,6 +12,7 @@ var element = yo`<div>
         <div class="col s12 m6 push-m8">
           <a href="#!" class="btn btn-large btn-flat dropdown-button" data-activates="drop-user">
             <i class="fa fa-user" aria-hidden="true"></i>
+            
           </a>
           <ul id="drop-user" class="dropdown-content">
             <li>

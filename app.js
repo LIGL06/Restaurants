@@ -9,9 +9,8 @@ var sassMiddleware = require('node-sass-middleware');
 var methodOverride = require('method-override');
 
 var session_mid = require('./middleware/session');
-var index = require('./routes/index');
-var auth = require('./routes/auth');
 var api = require('./routes/api');
+var auth = require('./routes/auth');
 
 var app = express();
 var port = process.env.PORT || 8080
@@ -26,7 +25,8 @@ app.use(methodOverride('_method'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cookieParser({
+app.use(cookieParser());
+app.use(cookieSession({
 	name: 'RestaurantifySession',
 	keys: ['0aa2954581642f9bef5285d890bc2b18','fc7ada869f2fdbd77d12ce98781e5679'],
 	maxAge: 1 * 60 * 60 * 1000
@@ -40,9 +40,9 @@ app.use(sassMiddleware({
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
 app.use('/auth', auth);
-app.use('/dashboard', session_mid);
+app.use('/api', api);
+app.use('/', session_mid);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -6,11 +6,11 @@ mongoose.connect(mongoUri, function(error){
 })
 const email_match = [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/ , "use a valid email"];
 const user_schema = new Schema({
-  fname: {type: String, required: "first name is mandatory"},
-  lname: {type: String, required: "last name is mandatory"},
+  fname: {type: String, required: "full name is mandatory"},
   sex: String,
-  email: {type: String, required: "email is mandatory", match: email_match},
-  password: String,
+  email: {type: String, required: "email is mandatory", match: email_match, unique: true},
+  username: {type: String, required: "username is mandatory", unique: true},
+  password: {type: String, required: "password is mandatory"},
   created: {type: Date, default: Date.now}
 })
 const User = mongoose.model('user',user_schema)

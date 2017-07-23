@@ -17,6 +17,24 @@ router.get('/comments', function(req, res, next) {
   });
 });
 
+router.get('/pictures', function(req, res, next){
+var pictures = [
+      {
+        user: {
+        username: 'ligl007',
+        avatar: 'https://res.cloudinary.com/uv-marketing/image/upload/v1500773490/ligl007_procfile.jpg'
+        },
+      url: 'https://res.cloudinary.com/uv-marketing/image/upload/v1500773833/ligl007_picture.jpg',
+      likes: 0,
+      liked: false,
+      createdAt: new Date().setDate(new Date().getDate()-10)
+      }
+  ];
+  setTimeout(function(){
+      res.send(pictures)
+  },2000)
+});
+
 router.get('/offers', function(req, res, next) {
   Offer.find({}, function(error, docs){
     if(error) res.send(error);
@@ -48,7 +66,9 @@ router.get('/qrs', function(req, res, next) {
 router.get('/restaurants', function(req, res, next) {
   Restaurant.find({}, function(error, docs){
     if(error) res.send(error);
-    res.send(docs);
+    setTimeout(function(){
+      res.send(docs)
+  },2000)
   });
 });
 
