@@ -11,6 +11,7 @@ const user_schema = new Schema({
   email: {type: String, required: "email is mandatory", match: email_match, unique: true},
   username: {type: String, required: "username is mandatory", unique: true},
   password: {type: String, required: "password is mandatory"},
+  type: {type: Boolean, default: false},
   created: {type: Date, default: Date.now}
 })
 const User = mongoose.model('user',user_schema)

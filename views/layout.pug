@@ -10,25 +10,31 @@ html
         .container
           .row
             .col.s12.m6
-              a.brand-logo.platzigram(href='/') Restaurantify
-            .col.s2.offset-s9.m6.offset-m6.right-align
+              a.brand-logo.platzigram(href='/dash') Restaurantify
+            .col.s2.offset-s9.m6.offset-m6.right-align.hide-on-med-and-down
               a.btn.btn-large.btn-flat.dropdown-button(href='#!', data-activates='drop-user')
-                i.fa.fa-user
+                if user
+                  p.nmtop-1 #{user.username} #[i.fa.fa-user]
+                if !user
+                  i.fa.fa-user.nmtop-1
               ul#drop-user.dropdown-content
-                li #[a(href='#!') ${translate.message('logout')}]
+                if user
+                  if user.type
+                    li #[a(href='/restaurants/new') Nuevo Restaurante]
+                  li #[a(href='/auth/signout') Salir]
     block content
     footer.site-footer
       .container
         .row
           .col.s12.l3.center-align
-            a.btn.btn-flat.dropdown-button(href='#!', data-activates='footer-dropdown') ${translate.message('language')}
+            a.btn.btn-flat.dropdown-button(href='#!', data-activates='footer-dropdown') Idioma
             ul#footer-dropdown.dropdown-content
               li
-                a(href='#!', onclick="${lang.bind(null,'es')}") ${translate.message('spanish')}
+                a(href='#!', onclick="${lang.bind(null,'es')}") Español
               li
-                a(href='#!', onclick="${lang.bind(null,'en-US')}") ${translate.message('english')}
+                a(href='#!', onclick="${lang.bind(null,'en-US')}") Inglés
           .col.s12.l3.push-l6.center-align
             | © 2017 | 
-            a(href='https://uvmarketing.com.mx') UV Marketing
+            a(href='https://uvmarketing.com.mx', target='_blank') UV Marketing
     script(src='/javascripts/jquery.min.js')
     script(src='/javascripts/materialize.min.js')

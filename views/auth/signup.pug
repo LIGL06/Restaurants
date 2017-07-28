@@ -10,18 +10,21 @@ block content
                         .row
                             .signup-box
                                 h1.platzigram Restaurantify
-                                form.signup-form(action='/auth/signin', method='POST')
+                                form.signup-form(action='/auth/signup', method='POST')
+                                    h2 Regístrate para ver las recomendaciones de tus amigos sobre restaurantes
                                     .section
-                                        a.btn.btn-fb.hide-on-small-only Iniciar sesión con Facebook
+                                        a.btn.btn-fb.hide-on-small-only Registrarse con Facebook
                                         a.btn.btn-fb.hide-on-med-and-up
                                             i.fa.fa-facebook-official
                                             |  Iniciar sesión
                                     .divider
                                     .section
+                                        input(type='email', name='email', placeholder="Correo electrónico", required)
+                                        input(type='text', name='name', placeholder="Nombre (s)", required)
                                         input(type='text', name='username', placeholder="Nombre de usuario", required)
                                         input(type='password', name='password', placeholder="Contraseña", required)
-                                        button.btn.waves-effect.waves-light.btn-signup(type='submit') Iniciar sesión
+                                        button.btn.waves-effect.waves-light.btn-signup(type='submit') Regístrate
                         .row
                             .login-box
-                                |   ¿No tienes una cuenta? 
-                                a(href='/auth/signup') Regístrate
+                                |   ¿Tienes una cuenta? 
+                                a(href='/auth/signin') Entrar

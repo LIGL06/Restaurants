@@ -19,14 +19,14 @@ router.post('/signin', function(req, res, next){
           req.session.user_username = user.username
           req.session.user_fname = user.fname
         }
-         res.redirect('/');
+         res.redirect('/dash');
       }
     });
   }
 });
 
 router.get('/signup', function(req, res, next){
-  res.render('auth/singup', { title: 'Restaurantify - Signup' });
+  res.render('auth/signup', { title: 'Restaurantify - Signup' });
 });
 
 router.post('/signup', function(req, res, next){
@@ -46,7 +46,7 @@ router.post('/signup', function(req, res, next){
             req.session.user_id = user._id;
             req.session.user_username = user.username;
             req.session.user_fname = user.fname;
-            res.redirect('/');
+            res.redirect('/dash');
           }
         });
       }else{
@@ -59,4 +59,8 @@ router.post('/signup', function(req, res, next){
   }
 });
 
+router.get('/signout', function(req, res, next){
+  req.session = null;
+  res.redirect('/auth/signin');
+})
 module.exports = router;

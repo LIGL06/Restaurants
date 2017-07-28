@@ -1,5 +1,10 @@
 extends layout
 block content
-    h1= message
-    h2= error.status
-    pre #{error.stack}
+   .container.landing
+    .row
+        .col.s12.push-s1
+            .row
+                .col.m12
+                    h1 #[i.fa.fa-exclamation-circle] #{error.status}
+                    h3= message
+                                  

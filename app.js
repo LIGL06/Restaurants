@@ -12,6 +12,7 @@ var session_mid = require('./middleware/session');
 var api = require('./routes/api');
 var auth = require('./routes/auth');
 var index = require('./routes/index');
+var restaurants = require('./routes/restaurants');
 
 var app = express();
 var port = process.env.PORT || 8080
@@ -44,6 +45,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/auth', auth);
 app.use('/api', api);
 app.use('/', session_mid);
+app.use('/dash', index);
+app.use('/restaurants', restaurants);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -60,7 +63,7 @@ app.use(function(err, req, res, next) {
 
 	// render the error page
 	res.status(err.status || 500);
-	res.render('error');
+	res.render('error', {title: 'Restaurantify - Error'});
 });
 
 app.listen(port, function(error){

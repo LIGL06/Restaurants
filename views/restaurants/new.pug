@@ -1,0 +1,23 @@
+extends ../layout
+block content
+    .container.landing
+            .row
+                .col.s12
+                    .row
+                        .col.m7.hide-on-small-only
+                            img.iphone(src='https://res.cloudinary.com/uv-marketing/image/upload/v1500773833/ligl007_picture.jpg')
+                        .col.s12.m5
+                            .row
+                                .signup-box
+                                    h1.platzigram Nuevo Restaurante
+                                    form.signup-form(action='/restaurants', method='POST')
+                                        h2 Crea experiencias nuevas para cada uno de tus clientes
+                                        .divider
+                                        .section
+                                            input(type='text', name='name', placeholder="Nombre", required)
+                                            input(type='text', name='address', placeholder="Dirección", required)
+                                            button.btn.waves-effect.waves-light.btn-signup(type='submit') Crear
+                            .row
+                                .login-box
+                                    |   ¿Tienes una cuenta? 
+                                    a(href='/auth/signin') Entrar

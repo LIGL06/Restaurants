@@ -15,6 +15,10 @@ var restaurant_schema = new Schema({
 	created: {
 		type: Date,
 		default: Date.now
+	},
+	createdBy: {
+		type: Schema.Types.ObjectId, 
+		ref: 'User'
 	}
 });
 
