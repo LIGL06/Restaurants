@@ -24,6 +24,6 @@ var el = yo`<nav class="header">
 module.exports = function header (ctx, next) {
   var container = document.getElementById('header-container')
   empty(container).appendChild(el);
-  $('.dropdown-button').dropdown();
+  $('.dropdown-button').dropdown(); 
   next();
 }

@@ -5,7 +5,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/signin', function(req, res, next) {
-  res.render('layout', { title: 'Restaurantify - Signin' });
+  res.render('auth/signin', { title: 'Restaurantify - Signin' });
 });
 
 router.post('/signin', function(req, res, next){
@@ -26,7 +26,7 @@ router.post('/signin', function(req, res, next){
 });
 
 router.get('/signup', function(req, res, next){
-  res.render('layout', { title: 'Restaurantify - Signup' });
+  res.render('auth/singup', { title: 'Restaurantify - Signup' });
 });
 
 router.post('/signup', function(req, res, next){

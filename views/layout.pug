@@ -5,9 +5,30 @@ html
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    section#header-container
-    section#main-container
+    nav.header
+      .nav-wrapper
+        .container
+          .row
+            .col.s12.m6
+              a.brand-logo.platzigram(href='/') Restaurantify
+            .col.s2.offset-s9.m6.offset-m6.right-align
+              a.btn.btn-large.btn-flat.dropdown-button(href='#!', data-activates='drop-user')
+                i.fa.fa-user
+              ul#drop-user.dropdown-content
+                li #[a(href='#!') ${translate.message('logout')}]
     block content
+    footer.site-footer
+      .container
+        .row
+          .col.s12.l3.center-align
+            a.btn.btn-flat.dropdown-button(href='#!', data-activates='footer-dropdown') ${translate.message('language')}
+            ul#footer-dropdown.dropdown-content
+              li
+                a(href='#!', onclick="${lang.bind(null,'es')}") ${translate.message('spanish')}
+              li
+                a(href='#!', onclick="${lang.bind(null,'en-US')}") ${translate.message('english')}
+          .col.s12.l3.push-l6.center-align
+            | © 2017 | 
+            a(href='https://uvmarketing.com.mx') UV Marketing
     script(src='/javascripts/jquery.min.js')
     script(src='/javascripts/materialize.min.js')
-    script(src='/javascripts/app.js', type='application/javascript')

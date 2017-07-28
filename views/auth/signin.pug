@@ -1,0 +1,27 @@
+extends ../layout
+block content
+    .container.landing
+        .row
+            .col.s12.push-s1
+                .row
+                    .col.m5.hide-on-small-only
+                        img.iphone(src='/images/iphone.png')
+                    .col.s12.m7
+                        .row
+                            .signup-box
+                                h1.platzigram Restaurantify
+                                form.signup-form(action='/auth/signin', method='POST')
+                                    .section
+                                        a.btn.btn-fb.hide-on-small-only ${translate.message('signup.facebook')}
+                                        a.btn.btn-fb.hide-on-med-and-up
+                                            i.fa.fa-facebook-official
+                                            |  ${translate.message('signup.text')}
+                                    .divider
+                                    .section
+                                        input(type='text', name='username', placeholder="${translate.message('username')}", required)
+                                        input(type='password', name='password', placeholder="${translate.message('password')}", required)
+                                        button.btn.waves-effect.waves-light.btn-signup(type='submit') ${translate.message('signup.text')}
+                        .row
+                            .login-box
+                                |   ${translate.message('signin.not-have-account')}
+                                a(href='/signup') ${translate.message('signup.call-to-action')}
