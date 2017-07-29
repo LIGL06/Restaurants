@@ -1,6 +1,7 @@
 var mongoose = require('mongoose'),
 	Schema = mongoose.Schema,
 	User = mongoose.model('user'),
+	Photo = mongoose.model('photo'),
 	mongoUri = process.env.MONGODB_URI || 'mogodb://localhost/restaurants';
 
 mongoose.connect(mongoUri, function(error) {

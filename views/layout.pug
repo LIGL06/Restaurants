@@ -14,7 +14,7 @@ html
             .col.s2.offset-s9.m6.offset-m6.right-align.hide-on-med-and-down
               a.btn.btn-large.btn-flat.dropdown-button(href='#!', data-activates='drop-user')
                 if user
-                  p.nmtop-1 #{user.username} #[i.fa.fa-user]
+                  p.nmtop-1 #{user.fname} #[i.fa.fa-user]
                 if !user
                   i.fa.fa-user.nmtop-1
               ul#drop-user.dropdown-content
@@ -38,3 +38,7 @@ html
             a(href='https://uvmarketing.com.mx', target='_blank') UV Marketing
     script(src='/javascripts/jquery.min.js')
     script(src='/javascripts/materialize.min.js')
+    script.
+      $('.dropdown-button').dropdown({
+        belowOrigin: true
+      });
