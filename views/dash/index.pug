@@ -2,23 +2,21 @@ extends ../layout
 block content
     .container.landing
         .row
-            .col.s12
-                .row
-                    .col.m12
-                        each restaurant in restaurants
-                            .card
-                                .card-image
-                                    img.activator(src='https://res.cloudinary.com/uv-marketing/image/upload/v1500773833/ligl007_picture.jpg')
-                                    i.fa.fa-heart.like-heart
-                                .card-content
-                                    a.card-title(href='/api/restaurant/#{restaurant._id}')= restaurant.name
-                                        img.avatar(src='https://res.cloudinary.com/uv-marketing/image/upload/v1500773490/ligl007_procfile.jpg')
-                                        br
-                                        small.username #{restaurant.createdBy}
-                                    small.right.time #{restaurant.created}
-                                    p
-                                        a.left(href='#!')
-                                            i.fa.fa-heart-o.heart-o
-                                        a.left(href='#!')
-                                            i.fa.fa-heart.heart
-                                        span.left.likes #{restaurant.visits}
+            .col.m7.push-m2
+                each restaurant in restaurants
+                    - var url = restaurant._id
+                    .card
+                        .card-image
+                            img.activator(src='https://res.cloudinary.com/uv-marketing/image/upload/v1500773833/ligl007_picture.jpg')
+                            i.fa.fa-heart.like-heart
+                        .card-content
+                            a.card-title(href='/restaurants/'+url) #{restaurant.name} 
+                                img.avatar(src='https://res.cloudinary.com/uv-marketing/image/upload/v1500773490/ligl007_procfile.jpg')
+                                small.username #{restaurant.createdBy}
+                            small.right.time #{restaurant.created}
+                            p
+                                a.left(href='#!')
+                                    i.fa.fa-heart-o.heart-o
+                                a.left(href='#!')
+                                    i.fa.fa-heart.heart
+                                span.left.likes #{restaurant.visits}

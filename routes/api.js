@@ -112,6 +112,13 @@ router.get('/restaurants', function(req, res, next) {
   });
 });
 
+router.get('/restaurants/:id', function(req, res, next){
+  Restaurant.findOne({_id:req.params.id}, function(error, restaurant){
+    if (error) res.render('error', {error:error});
+    else res.send(restaurant);
+  })
+});
+
 router.get('/rewards', function(req, res, next) {
   Reward.find({}, function(error, docs){
     if(error) res.send(error);
