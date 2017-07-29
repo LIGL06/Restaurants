@@ -1,6 +1,7 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var mongoUri = process.env.MONGODB_URI || 'mogodb://localhost/restaurants';
+var mongoose = require('mongoose'),
+	Schema = mongoose.Schema,
+	User = mongoose.model('user'),
+	mongoUri = process.env.MONGODB_URI || 'mogodb://localhost/restaurants';
 
 mongoose.connect(mongoUri, function(error) {
 	if (error) throw error
@@ -8,18 +9,14 @@ mongoose.connect(mongoUri, function(error) {
 
 var restaurant_schema = new Schema({
 	name: String,
-	score: Number,
 	address: String,
-	visits: Number,
 	type: String,
-	created: {
-		type: Date,
-		default: Date.now
-	},
-	createdBy: {
-		type: Schema.Types.ObjectId, 
-		ref: 'User'
-	}
+	score: Number,
+	mainPicture: String,
+	visits: Number,
+	created: { type: Date, default: Date.now },
+	createdBy: { type: Schema.Types.ObjectId, ref: 'user'},
+	photos: [{type: Schema.Types.ObjectId, ref: 'photo'}],
 });
 
 var Restaurant = mongoose.model('restaurant', restaurant_schema);

@@ -4,20 +4,40 @@ block content
             .row
                 .col.s12
                     .row
-                        .col.m7.hide-on-small-only
-                            img.iphone(src='https://res.cloudinary.com/uv-marketing/image/upload/v1500773833/ligl007_picture.jpg')
-                        .col.s12.m5
+                        .col.m6.hide-on-small-only
+                            img#preview.iphone(src='https://res.cloudinary.com/uv-marketing/image/upload/v1500773833/ligl007_picture.jpg')
+                        .col.s12.m6
                             .row
                                 .signup-box
                                     h1.platzigram Nuevo Restaurante
-                                    form.signup-form(action='/restaurants', method='POST')
+                                    form.signup-form(action='/restaurants', method='POST', enctype='multipart/form-data')
                                         h2 Crea experiencias nuevas para cada uno de tus clientes
                                         .divider
                                         .section
                                             input(type='text', name='name', placeholder="Nombre", required)
                                             input(type='text', name='address', placeholder="Dirección", required)
+                                            form
+                                                .file-field.input-field
+                                                    .btn
+                                                        span Foto
+                                                        input#imgfield(type='file', name='picture', onchange='readFile(this);')
+                                                    .file-path-wrapper
+                                                        input.file-path.validate(type='text', required)
                                             button.btn.waves-effect.waves-light.btn-signup(type='submit') Crear
                             .row
                                 .login-box
                                     |   ¿Tienes una cuenta? 
                                     a(href='/auth/signin') Entrar
+    script.
+        function readFile(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#preview')
+                    .attr('src', e.target.result);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+        }

@@ -4,16 +4,21 @@ block content
         .row
             .col.m7.push-m2
                 each restaurant in restaurants
-                    - var url = restaurant._id
+                    - var imag_url = restaurant.mainPicture
+                    - var rest_url = restaurant._id
+                    - var user_url = restaurant.createdBy._id
                     .card
                         .card-image
-                            img.activator(src='https://res.cloudinary.com/uv-marketing/image/upload/v1500773833/ligl007_picture.jpg')
+                            if restaurant.mainPicture
+                                img.activator(src='/uploads/'+imag_url)
+                            if !restaurant.mainPicture
+                                img.activator(src='https://res.cloudinary.com/uv-marketing/image/upload/v1500773833/ligl007_picture.jpg')
                             i.fa.fa-heart.like-heart
                         .card-content
-                            a.card-title(href='/restaurants/'+url) #{restaurant.name} 
+                            a.card-title(href='/restaurants/'+rest_url) #{restaurant.name}
                                 img.avatar(src='https://res.cloudinary.com/uv-marketing/image/upload/v1500773490/ligl007_procfile.jpg')
-                                small.username #{restaurant.createdBy}
-                            small.right.time #{restaurant.created}
+                                a.username(href='/users/'+user_url) #[small #[b Por: ] #{restaurant.createdBy.username}]
+                            small.right.time= moment(restaurant.created).fromNow()
                             p
                                 a.left(href='#!')
                                     i.fa.fa-heart-o.heart-o

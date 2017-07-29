@@ -1,20 +1,32 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var cookieSession = require('cookie-session');
-var bodyParser = require('body-parser');
-var sassMiddleware = require('node-sass-middleware');
-var methodOverride = require('method-override');
+var	bodyParser = require('body-parser'),
+	express = require('express'),
+	cloudinary = require('cloudinary'),
+	cookieParser = require('cookie-parser'),
+	cookieSession = require('cookie-session'),
+	favicon = require('serve-favicon'),
+	logger = require('morgan'),
+	sassMiddleware = require('node-sass-middleware'),
+	methodOverride = require('method-override'),
+	multer = require('multer'),
+	path = require('path');
+	storage = multer.diskStorage({
+		destination: function(req, file, cb){
+			cb(null, './public/uploads/')
+		}, filename: function(req, file, cb){
+			cb(null, Date.now() + '.jpg')
+		}
+	})
+	upload = multer({ storage: storage});
 
-var session_mid = require('./middleware/session');
-var api = require('./routes/api');
-var auth = require('./routes/auth');
-var index = require('./routes/index');
-var restaurants = require('./routes/restaurants');
+var session_mid = require('./middleware/session'),
+	api = require('./routes/api'),
+	auth = require('./routes/auth'),
+	index = require('./routes/index'),
+	restaurants = require('./routes/restaurants'),
+	users = require('./routes/users');
 
 var app = express();
+app.locals.moment = require('moment');
 var port = process.env.PORT || 8080
 
 // view engine setup
@@ -47,6 +59,7 @@ app.use('/api', api);
 app.use('/', session_mid);
 app.use('/dash', index);
 app.use('/restaurants', restaurants);
+app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
