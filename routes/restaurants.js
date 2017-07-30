@@ -31,6 +31,19 @@ router.post('/', upload.single('picture'), function(req, res, next) {
       }
     });
 });
+  
+router.get('/edit/:id', upload.single('picture'), function(req, res, next){
+  Restaurant.findOne({_id:req.params.id}).populate({path:'photos', select: 'url'}).populate({path:'createdBy', select: 'username'}).exec(function(error, restaurant){
+    res.render('restaurants/edit', {title:'Restaurantify - Editar', restaurant:restaurant});
+  });
+});
+
+router.post('/edit/:id', upload.single('picture'), function(req, res, next){
+  Restaurant.findOneAndUpdate({_id:req.params.id}, { $set:{name:req.body.name,address:req.body.address }}, {new: true},function(error, restaurant){
+    if (error) throw error;
+    else res.redirect('/dash')
+  });
+});
 
 router.get('/new', function(req, res, next){
 	res.render('restaurants/new', {title: 'Restaurantify - New'});
@@ -38,7 +51,8 @@ router.get('/new', function(req, res, next){
 
 router.get('/:id', function(req, res, next){
   Restaurant.findOne({_id:req.params.id}).populate({path:'photos', select: 'url'}).populate({path:'createdBy', select: 'username'}).exec(function(error, restaurant){
-    res.send(restaurant);
-  })
+    // res.send(restaurant);
+    res.render('restaurants/show', {title: `Restaurantify`,rest:restaurant});
+  });
 });
 module.exports = router;
