@@ -21,6 +21,7 @@ var	bodyParser = require('body-parser'),
 var session_mid = require('./middleware/session'),
 	api = require('./routes/api'),
 	auth = require('./routes/auth'),
+	comments = require('./routes/comments'),
 	index = require('./routes/index'),
 	restaurants = require('./routes/restaurants'),
 	users = require('./routes/users');
@@ -59,6 +60,7 @@ app.use('/api', api);
 app.use('/', session_mid);
 app.use('/', index);
 app.use('/restaurants', restaurants);
+app.use('/comments', comments);
 app.use('/users', users);
 
 // catch 404 and forward to error handler
