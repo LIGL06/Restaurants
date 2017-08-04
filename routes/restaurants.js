@@ -49,6 +49,13 @@ router.get('/new', function(req, res, next){
 	res.render('restaurants/new', {title: 'Restaurantify - New'});
 });
 
+router.get('/all', function(req, res, next){
+  Restaurant.findOne({createdBy:req.session.user_id}).populate({path:'photos', select: 'url'}).populate({path:'createdBy', select: 'username'}).exec(function(error, restaurant){
+    // res.send(restaurant);
+    res.render('restaurants/list', {title: `Resturantify - Mis Restaurantes`, rest:restaurant});
+  });
+});
+
 router.get('/:id', function(req, res, next){
   Restaurant.findOne({_id:req.params.id}).populate({path:'photos', select: 'url'}).populate({path:'createdBy', select: 'username'}).exec(function(error, restaurant){
     // res.send(restaurant);

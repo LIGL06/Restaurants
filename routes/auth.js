@@ -19,7 +19,7 @@ router.post('/signin', function(req, res, next){
           req.session.user_username = user.username
           req.session.user_fname = user.fname
         }
-         res.redirect('/dash');
+         res.redirect('/');
       }
     });
   }

@@ -57,7 +57,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/auth', auth);
 app.use('/api', api);
 app.use('/', session_mid);
-app.use('/dash', index);
+app.use('/', index);
 app.use('/restaurants', restaurants);
 app.use('/users', users);
 

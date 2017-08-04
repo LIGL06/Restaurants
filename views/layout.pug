@@ -10,11 +10,11 @@ html
         .container
           .row
             .col.s12.m6
-              a.brand-logo.platzigram(href='/dash') Restaurantify
+              a.brand-logo.platzigram(href='/') Restaurantify
             .col.s2.offset-s9.m6.offset-m6.right-align.hide-on-med-and-down
               a.btn.btn-large.btn-flat.dropdown-button(href='#!', data-activates='drop-user')
                 if user
-                  p.nmtop-1 #{user.fname} #[i.fa.fa-user]
+                  p.nmtop-1 #{user.fname} #[i.fa.fa-user] #[i.fa.fa-caret-down]
                 if !user
                   i.fa.fa-user.nmtop-1
               ul#drop-user.dropdown-content
@@ -41,5 +41,6 @@ html
     script(src='/javascripts/materialize.min.js')
     script.
       $('.dropdown-button').dropdown({
+        hover: true,
         belowOrigin: true
       });
