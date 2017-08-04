@@ -14,7 +14,7 @@ router.post('/', function(req, res, next) {
 		restaurant: req.body.restaurant,
 		text: req.body.text
 	});
-	Restaurant.findOneAndUpdate({_id:req.body.restaurant},{ $set:{comments:comment._id} },{ new: true }, function(error, restaurant){
+	Restaurant.findOneAndUpdate({_id:req.body.restaurant},{ $push: {comments:comment._id} }, function(error, restaurant){
 		if (error) throw error;
 		else {
 			comment.save(function(error){

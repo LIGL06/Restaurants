@@ -17,13 +17,12 @@ block content
                                 a.username(href='/users/'+restaurant.createdBy._id) #[small #[b Por: ] #{restaurant.createdBy.username}]
                             small.right.time= moment(restaurant.created).fromNow()
                             p #[a.left(href='#!') #[i.fa.fa-heart-o]]                                
-                            p
-                                each comment in restaurant.comments
-                                    a.username(href='/users/'+restaurant.createdBy._id) #[b #{comment.user.username}] 
-                                    small= comment.text
-                                a.center(href='#!')
-                                    form(action='/comments', method='POST')
-                                        input(type='hidden', name='user', value=''+user._id)
-                                        input(type='hidden', name='restaurant', value=''+restaurant._id)
-                                        input.form-control(type='text', name='text', placeholder='Añadir comentario...')
+                            each comment in restaurant.comments
+                                br
+                                small.comment #[a.username(href='/users/'+restaurant.createdBy._id) #[b #{comment.user.username}]] #{comment.text}
+                            a.center(href='#!')
+                                form(action='/comments', method='POST')
+                                    input(type='hidden', name='user', value=''+user._id)
+                                    input(type='hidden', name='restaurant', value=''+restaurant._id)
+                                    input.form-control(type='text', name='text', placeholder='Añadir comentario...')
                                 small.right.likes #{restaurant.visits} visitas
