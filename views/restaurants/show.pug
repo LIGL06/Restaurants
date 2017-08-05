@@ -6,7 +6,7 @@ block content
                 .row
                     - var rest_pic = rest.mainPicture
                     .col.s12.m10.offset-m1.l3
-                        img.profilepic(src='/uploads/'+rest_pic, alt='/images/default.png')
+                        img.profilepic(src=''+rest_pic)
                     .col.s12.m10.offset-m1.l8.push-l1.left-align
                         h4.hide-on-large-only.center-align.black-text #{rest.name}                             
                         h5.hide-on-large-only.center-align.grey-text #{rest.address}

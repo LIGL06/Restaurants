@@ -1,6 +1,5 @@
 var	bodyParser = require('body-parser'),
 	express = require('express'),
-	cloudinary = require('cloudinary'),
 	cookieParser = require('cookie-parser'),
 	cookieSession = require('cookie-session'),
 	favicon = require('serve-favicon'),

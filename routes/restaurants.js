@@ -1,4 +1,5 @@
 var express = require('express'),
+  cloudinary = require('cloudinary'),
   Restaurant = require('../models/restaurant').Restaurant,
   Photo = require('../models/photo').Photo,
   admin_mid = require('../middleware/admin'),
@@ -13,26 +14,28 @@ router.post('/', upload.single('picture'), function(req, res, next) {
     Restaurant.findOne({name: req.body.name}, function(error, doc){
       if(error) res.render('error', {error:error});
       if(!doc) {
-        var restaurant = new Restaurant({
-          name: req.body.name,
-          address: req.body.address,
-          createdBy: req.session.user_id,
-          mainPicture: req.file.filename,
-        });
-        var picture = new Photo({
-          restaurant: restaurant._id,
-          url: req.file.filename,
-          position: 1
-        })
-          restaurant.photos = picture._id;
-        restaurant.save(function(error){
-          if(error) res.render('error', {error:error});
-          else {
-            picture.save(function(error){
-              if(error) res.render('error', {error:error});
-              else res.redirect('/');
-            });
-          }
+        cloudinary.uploader.upload(req.file.path, function(result){
+          var restaurant = new Restaurant({
+            name: req.body.name,
+            address: req.body.address,
+            createdBy: req.session.user_id,
+            mainPicture: result.secure_url,
+          });
+          var picture = new Photo({
+            restaurant: restaurant._id,
+            url: result.secure_url,
+            position: 1
+          })
+            restaurant.photos = picture._id;
+          restaurant.save(function(error){
+            if(error) res.render('error', {error:error});
+            else {
+              picture.save(function(error){
+                if(error) res.render('error', {error:error});
+                else res.redirect('/');
+              });
+            }
+          });
         });
       }
     });

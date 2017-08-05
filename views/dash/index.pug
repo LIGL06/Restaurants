@@ -7,7 +7,7 @@ block content
                     .card
                         .card-image
                             if restaurant.mainPicture
-                                img.activator(src='/uploads/'+restaurant.mainPicture)
+                                img.activator(src=''+restaurant.mainPicture)
                             if !restaurant.mainPicture
                                 img.activator(src='https://res.cloudinary.com/uv-marketing/image/upload/v1500773833/ligl007_picture.jpg')
                             i.fa.fa-heart.like-heart
