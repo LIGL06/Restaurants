@@ -1,0 +1,38 @@
+extends ../layout
+block content
+    .container.landing
+            .row
+                .col.s12
+                    .row
+                        .col.m6.hide-on-small-only
+                            .center(style='padding-top:10em')
+                                i.fa.fa-percent.fa-5x
+                                i.fa.fa-arrow-down.fa-5x
+                                i.fa.fa-hand-peace-o.fa-5x
+                        .col.s12.m6
+                            .row
+                                .signup-box
+                                    h1.platzigram Nueva Oferta
+                                    form.signup-form(action='/offers', method='POST')
+                                        h2 Crea ofertas nuevas para cada uno de tus restaurantes
+                                        .divider
+                                        .input-field
+                                            input(type='text', name='name', placeholder="Nombre", required)
+                                            input(type='number', name='discount', placeholder="Descuento %", min='0', max='50', required)
+                                            select(name='restaurant')
+                                                each restaurant in restaurants
+                                                    option(value=''+restaurant._id)= restaurant.name
+                                            button.btn.waves-effect.waves-light.btn-signup(type='submit') Crear
+    script.
+        function readFile(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#preview')
+                    .attr('src', e.target.result);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+        }

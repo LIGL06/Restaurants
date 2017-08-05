@@ -23,6 +23,7 @@ var session_mid = require('./middleware/session'),
 	auth = require('./routes/auth'),
 	comments = require('./routes/comments'),
 	index = require('./routes/index'),
+	offers = require('./routes/offers'),
 	restaurants = require('./routes/restaurants'),
 	users = require('./routes/users');
 
@@ -56,11 +57,12 @@ app.use(sassMiddleware({
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/auth', auth);
-app.use('/api', api);
 app.use('/', session_mid);
 app.use('/', index);
-app.use('/restaurants', restaurants);
+app.use('/api', api);
 app.use('/comments', comments);
+app.use('/offers', offers);
+app.use('/restaurants', restaurants);
 app.use('/users', users);
 
 // catch 404 and forward to error handler

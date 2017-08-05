@@ -22,6 +22,14 @@ html
                   if user.type
                     li #[a(href='/restaurants/new') Nuevo Restaurante]
                     li #[a(href='/restaurants/all') Mis Restaurantes]
+                    li.divider
+                    li #[a(href='/offers/new') Nuevo Oferta]
+                    li #[a(href='/offers/all') Mis Ofertas]
+                    li.divider
+                    li #[a(href='/products/new') Nuevo Producto]
+                    li #[a(href='/products/all') Mis Productos]
+                    li.divider
+                  li #[a(href='/offers/all') Mis Promociones]  
                   li #[a(href='/auth/signout') Salir]
     block content
     footer.site-footer
@@ -40,6 +48,7 @@ html
     script(src='/javascripts/jquery.min.js')
     script(src='/javascripts/materialize.min.js')
     script.
+      $('select').material_select();
       $('.dropdown-button').dropdown({
         hover: true,
         belowOrigin: true
