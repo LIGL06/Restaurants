@@ -6,11 +6,14 @@ var	bodyParser = require('body-parser'),
 	logger = require('morgan'),
 	sassMiddleware = require('node-sass-middleware'),
 	methodOverride = require('method-override'),
+	mkdirp = require('mkdirp'),
 	multer = require('multer'),
+	dest = './public/uploads',
 	path = require('path');
 	storage = multer.diskStorage({
 		destination: function(req, file, cb){
-			cb(null, './public/uploads/')
+			mkdirp.sync(dest)
+			cb(null, dest)
 		}, filename: function(req, file, cb){
 			cb(null, Date.now() + '.jpg')
 		}

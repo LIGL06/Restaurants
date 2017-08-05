@@ -20,6 +20,7 @@
     "jquery": "~2",
     "materialize-css": "^0.98.2",
     "method-override": "^2.3.9",
+    "mkdirp": "^0.5.1",
     "moment": "^2.18.1",
     "mongoose": "^4.10.5",
     "morgan": "~1.8.1",
