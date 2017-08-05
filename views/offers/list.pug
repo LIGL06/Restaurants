@@ -4,8 +4,7 @@ block content
         .row
             .col.l12.m12.s12
                 ul.collection.with-header
-                    li.collection-header #[h4 Mis restaurantes]
-                    each restaurant in restaurants
+                    li.collection-header #[h4 Mis ofertas]
+                    each offer in offers
                         li.collection-item
-                            img.circle.avatar(src='/uploads/'+restaurant.mainPicture)
-                            span.title #[a(href='/restaurants/'+restaurant._id) #{restaurant.name}] #[br] #[small= restaurant.address] 
+                            span.title #[a(href='/offers/'+offer._id) #{offer.name}] #[br] #[small % #{offer.discount} descuento], #[small #{offer.instances} usos]

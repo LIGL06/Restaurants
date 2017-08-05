@@ -8,8 +8,10 @@ mongoose.connect(mongoUri, function(error) {
 
 var offer_schema = new Schema({
 	name: String,
+	user: { type: Schema.Types.ObjectId, ref: 'user' },
 	restaurant: { type: Schema.Types.ObjectId, ref: 'restaurant'},
-	discount: { type: Number, min: 0, max: 50 },
+	discount: { type: Number, min: 0, max: 50, default: 0 },
+	instances: { type: Number, min: 0, max: 100, default: 0 },
 	type: String,
 	QR: { type: Schema.Types.ObjectId, ref: 'qr' },
 	created: { type: Date, default: Date.now	}

@@ -1,6 +1,10 @@
-var express = require('express');
-var QR = require('../models/qr').QR;
-var router = express.Router();
+var express = require('express'),
+  QR = require('../models/qr').QR,
+  admin_mid = require('../middleware/admin'),
+  router = express.Router();
+  router.use('/new', admin_mid);
+  router.use('/all', admin_mid);
+  router.use('/edit/:id', admin_mid);
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {

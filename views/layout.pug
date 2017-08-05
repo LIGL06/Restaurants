@@ -14,7 +14,7 @@ html
             .col.s2.offset-s9.m6.offset-m6.right-align.hide-on-med-and-down
               a.btn.btn-large.btn-flat.dropdown-button(href='#!', data-activates='drop-user')
                 if user
-                  p.nmtop-1 #{user.fname} #[i.fa.fa-user] #[i.fa.fa-caret-down]
+                  p.nmtop-1 #{user.username} #[i.fa.fa-user] #[i.fa.fa-caret-down]
                 if !user
                   i.fa.fa-user.nmtop-1
               ul#drop-user.dropdown-content
@@ -29,20 +29,14 @@ html
                     li #[a(href='/products/new') Nuevo Producto]
                     li #[a(href='/products/all') Mis Productos]
                     li.divider
-                  li #[a(href='/offers/all') Mis Promociones]  
+                  li #[a(href='/rewards/all') Mis Recompensas]
+                  li #[a(href='/auth/profile') Mi Perfil]
                   li #[a(href='/auth/signout') Salir]
     block content
     footer.site-footer
       .container
         .row
-          .col.s12.l3.center-align
-            a.btn.btn-flat.dropdown-button(href='#!', data-activates='footer-dropdown') Idioma
-            ul#footer-dropdown.dropdown-content
-              li
-                a(href='#!', onclick="${lang.bind(null,'es')}") Español
-              li
-                a(href='#!', onclick="${lang.bind(null,'en-US')}") Inglés
-          .col.s12.l3.push-l6.center-align
+          .col.s12.l3.push-l9.center-align
             | © 2017 | 
             a(href='https://uvmarketing.com.mx', target='_blank') UV Marketing
     script(src='/javascripts/jquery.min.js')

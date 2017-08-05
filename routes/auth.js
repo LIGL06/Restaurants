@@ -18,6 +18,7 @@ router.post('/signin', function(req, res, next){
           req.session.user_id = user._id
           req.session.user_username = user.username
           req.session.user_fname = user.fname
+          req.session.type = user.type
         }
          res.redirect('/');
       }
@@ -43,16 +44,18 @@ router.post('/signup', function(req, res, next){
         user.save(function(error){
           if(error) throw error
           else{
-            req.session.user_id = user._id;
-            req.session.user_username = user.username;
-            req.session.user_fname = user.fname;
-            res.redirect('/dash');
+            req.session.user_id = user._id
+            req.session.user_username = user.username
+            req.session.user_fname = user.fname
+            req.session.type = user.type
+            res.redirect('/');
           }
         });
       }else{
-        req.session.user_id = user._id;
-        req.session.user_username = user.username;
-        req.session.user_fname = user.fname;
+        req.session.user_id = user._id
+        req.session.user_username = user.username
+        req.session.user_fname = user.fname
+        req.session.type = user.type
         res.redirect('/');
       }
     });

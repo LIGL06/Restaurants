@@ -1,9 +1,14 @@
 var express = require('express'),
   Restaurant = require('../models/restaurant').Restaurant,
   Photo = require('../models/photo').Photo,
+  admin_mid = require('../middleware/admin'),
   router = express.Router();
+  router.use('/new', admin_mid);
+  router.use('/all', admin_mid);
+  router.use('/edit/:id', admin_mid);
 
 /* GET users listing. */
+
 router.post('/', upload.single('picture'), function(req, res, next) {
     Restaurant.findOne({name: req.body.name}, function(error, doc){
       if(error) res.render('error', {error:error});

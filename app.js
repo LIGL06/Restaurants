@@ -19,6 +19,7 @@ var	bodyParser = require('body-parser'),
 	upload = multer({ storage: storage});
 
 var session_mid = require('./middleware/session'),
+	admin_mid = require('./middleware/admin'),
 	api = require('./routes/api'),
 	auth = require('./routes/auth'),
 	comments = require('./routes/comments'),
@@ -61,6 +62,7 @@ app.use('/', session_mid);
 app.use('/', index);
 app.use('/api', api);
 app.use('/comments', comments);
+app.use('/offers', admin_mid);
 app.use('/offers', offers);
 app.use('/restaurants', restaurants);
 app.use('/users', users);

@@ -4,18 +4,17 @@ block content
         .row
             .col.s12.m10.offset-m1.l8.offset-l2.center-align.heading
                 .row
-                    - var rest_pic = rest.mainPicture
                     .col.s12.m10.offset-m1.l3
-                        img.profilepic(src='/uploads/'+rest_pic, alt='/images/default.png')
+                        img.profilepic(src='/uploads/'+offer.mainPicture, alt='/images/default.png')
                     .col.s12.m10.offset-m1.l8.push-l1.left-align
-                        h4.hide-on-large-only.center-align.black-text #{rest.name}                             
-                        h5.hide-on-large-only.center-align.grey-text #{rest.address}
-                        h4.hide-on-med-and-down.left-align.black-text #{rest.name}
-                        h5.hide-on-med-and-down.left-align.grey-text #{rest.address}
+                        h4.hide-on-large-only.center-align.black-text #{offer.name}                             
+                        h5.hide-on-large-only.center-align.grey-text #{offer.address}
+                        h4.hide-on-med-and-down.left-align.black-text #{offer.name}
+                        h5.hide-on-med-and-down.left-align.grey-text #{offer.address}
                     .col.s12.m10.offset-m1.l12
                         a.btn.waves-effect.waves-light.col.l2.offset-l4 Seguir
                         if user.type
-                                a.btn.waves-effect.waves-light.col.l2.push-l1(href='/restaurants/edit/'+rest._id) Editar
+                                a.btn.waves-effect.waves-light.col.l2.push-l1(href='/restaurants/edit/'+offer._id) Editar
                 .row
                 if photos
                     each photo in photos
